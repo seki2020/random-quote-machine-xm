@@ -4,8 +4,12 @@ import Quote from './Quote/Quote';
 import './style.css';
 import axios from 'axios'
 import _ from 'lodash'
+import $ from 'jquery'
+
+import 'bootstrap/dist/css/bootstrap.css';
 
 
+const colors = ['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
 const REMOTE = 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json'
 
 const quoteList = []
@@ -26,7 +30,6 @@ class App extends Component {
     const self = this
     axios.get(REMOTE).then(function (response) {
       // perform setState here
-      debugger
       quoteList = [...response.data.quotes]
       const quoteIndex = _.random(quoteList.length)
       self.setState(quoteList[quoteIndex])
@@ -40,6 +43,22 @@ class App extends Component {
   handleNewQuote() {
     const nextIndex = _.random(quoteList.length)
     this.setState(quoteList[nextIndex])
+
+    // todo...add animation to transition to next card
+    //     var color = Math.floor(Math.random() * colors.length);
+    //     $("html body").animate(
+    //       {
+    //         backgroundColor: colors[color],
+    //         color: colors[color]
+    //       },
+    //       1000
+    //     );
+    //     $(".button").animate(
+    //       {
+    //         backgroundColor: colors[color]
+    //       },
+    //       1000
+    //     );
   }
 
   handleTweet() {
@@ -51,7 +70,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="card-container">
           <Quote data={this.state} handleNewQuote={this.handleNewQuote} handleTweet={this.handleTweet} />
         </div>
 
@@ -61,3 +80,4 @@ class App extends Component {
 }
 
 render(<App />, document.getElementById('root'));
+

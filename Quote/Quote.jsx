@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Quote.css'
 
 
 export default class Quote extends Component {

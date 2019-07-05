@@ -4,7 +4,6 @@ import Quote from './Quote/Quote';
 import './style.css';
 import axios from 'axios'
 import _ from 'lodash'
-import $ from 'jquery'
 
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -37,28 +36,24 @@ class App extends Component {
       //Some error occurred
       cosnole.error(error)
     });
+
   }
 
 
-  handleNewQuote() {
+  handleNewQuote(e) {
     const nextIndex = _.random(quoteList.length)
     this.setState(quoteList[nextIndex])
+    
+    this.changBG(e)
 
-    // todo...add animation to transition to next card
-    //     var color = Math.floor(Math.random() * colors.length);
-    //     $("html body").animate(
-    //       {
-    //         backgroundColor: colors[color],
-    //         color: colors[color]
-    //       },
-    //       1000
-    //     );
-    //     $(".button").animate(
-    //       {
-    //         backgroundColor: colors[color]
-    //       },
-    //       1000
-    //     );
+  }
+
+  changBG(e) {
+    var color = Math.floor(Math.random() * colors.length);
+    document.body.style.backgroundColor = colors[color]
+    document.body.style.color = colors[color]
+
+    e.target.style.backgroundColor = colors[color]
   }
 
   handleTweet() {

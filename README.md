@@ -2,7 +2,7 @@
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/random-quote-machine-xm)
 
-![](preview.gif)
+![](perview.gif)
 
 
 
